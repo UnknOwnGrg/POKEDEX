@@ -1,5 +1,7 @@
-function main(){
-    console.log("Hello, world!");
-}
-main();
+import { startREPL } from "./repl.js"
 
+function main(){
+    startREPL();
+}
+
+main();
