@@ -6,7 +6,7 @@ export type CLICommand = {
     name : string; 
     description : string ;
     //Added a Promise Callback
-    callback : (state : State) => Promise<void>;
+    callback : (state : State , ...args : string[]) => Promise<void>;
 }
 
 export type State = {
@@ -18,7 +18,7 @@ export type State = {
     prevLocationsURL : string;
 }
 
-export function initState(){
+export function initState(cacheInterval: number){
     const rl = createInterface({
         input : process.stdin, 
         output: process.stdout,
@@ -29,7 +29,7 @@ export function initState(){
         readline : rl, 
         commands : getCommands(),
         //Added return for ()
-        pokeAPI : new PokeAPI(), 
+        pokeAPI : new PokeAPI(cacheInterval), 
         nextLocationsURL : "", 
         prevLocationsURL : "", 
     }
