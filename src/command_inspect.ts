@@ -1,4 +1,4 @@
-import type { State } from "./state";
+import type { State } from "./state.js";
 
 export async function commandInspect(state: State , ...args: string[]){
     if(args.length !== 1){
